@@ -56,7 +56,7 @@ public class AddressBook {
 		}
 		System.out.println("\n Address Book:");
 		for (Contact person : people) {
-			System.out.println(person.getFirstName());
+			System.out.println(person);
 		}
 
 	}
@@ -96,6 +96,20 @@ public class AddressBook {
 				people.get(i).setEmail(email);
 
 				System.out.println("person edited sucessfully");
+			} else {
+				System.out.println("person not found");
+			}
+
+		}
+	}
+
+	public void removeContact() {
+		System.out.println("Enter the first name you want to remove.");
+		String firstName = sc.nextLine();
+		for (int i = 0; i < people.size(); i++) {
+			if (people.get(i).getFirstName().equals(firstName)) {
+				people.remove(people.get(i));
+				System.out.println("person removed sucessfully");
 			} else {
 				System.out.println("person not found");
 			}

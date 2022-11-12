@@ -8,11 +8,13 @@ public class AddressBookMain {
 		System.out.println("\n***Welcome To Address Book Program***\n");
 
 		Scanner input = new Scanner(System.in);
+
 		AddressBook details = new AddressBook();
 
 		int choice;
+
 		do {
-			System.out.println("\n1.Add contact\n2.Show Contact\n3.Edit Contact\n4.Exit\n");
+			System.out.println("\n1.Add contact\n2.Show Contact\n3.Edit Contact\n4.Delete Contact\n5.Exit\n");
 			System.out.println("Enter your choice: ");
 			choice = input.nextInt();
 			switch (choice) {
@@ -26,11 +28,14 @@ public class AddressBookMain {
 				details.editPerson();
 				break;
 			case 4:
+				details.removeContact();
+				break;
+			case 5:
 				System.out.println("Program Terminate Successfully!!!");
 				break;
 			default:
 				System.out.println("Enter Valid Input...");
 			}
-		} while (choice != 4);
+		} while (choice != 5);
 	}
 }
