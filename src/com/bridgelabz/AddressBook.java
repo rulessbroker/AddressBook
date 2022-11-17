@@ -49,10 +49,9 @@ public class AddressBook {
 	}
 
 	void addContact() {
-		boolean isDuplicate = checkDuplicateContact();
-		if (isDuplicate) {
+		boolean notDuplicate = checkDuplicateContact();
+		if (notDuplicate) {
 			createContacts();
-
 		} else {
 			System.out.println("already exist");
 		}
