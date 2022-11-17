@@ -6,13 +6,12 @@ import java.util.Scanner;
 
 public class AddressBook {
 
-	List<Contact> people = new ArrayList();
+	List<Contact> people = new ArrayList<Contact>();
 	Scanner sc = new Scanner(System.in);
+	Contact contacts = new Contact();
 
-	public void addContacts() {
-		Contact contacts = new Contact();
+	public void createContacts() {
 
-		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter first Name:");
 		String firstName = sc.nextLine();
 		contacts.setFirstName(firstName);
@@ -21,9 +20,9 @@ public class AddressBook {
 		String lastName = sc.nextLine();
 		contacts.setLastName(lastName);
 
-		System.out.println("Enter Adress:");
-		String adress = sc.nextLine();
-		contacts.setAddress(adress);
+		System.out.println("Enter Address:");
+		String address = sc.nextLine();
+		contacts.setAddress(address);
 
 		System.out.println("Enter city:");
 		String city = sc.nextLine();
@@ -47,6 +46,16 @@ public class AddressBook {
 
 		people.add(contacts);
 		System.out.println("person created sucessfully");
+	}
+
+	void addContact() {
+		boolean isDuplicate = checkDuplicateContact();
+		if (isDuplicate) {
+			createContacts();
+
+		} else {
+			System.out.println("already exist");
+		}
 	}
 
 	public void listPeople() {
@@ -115,6 +124,23 @@ public class AddressBook {
 			}
 
 		}
+	}
+
+	public boolean checkDuplicateContact() {
+
+		System.out.println("Enter First Name");
+		String fname = sc.nextLine();
+		System.out.println("Enter Last Name");
+		String lname = sc.nextLine();
+		for (int j = 0; j < people.size(); j++) {
+			Contact temp = people.get(j);
+			if (temp.getFirstName().equals(fname) && temp.getLastName().equals(lname)) {
+				System.out.println("Contact already exists!!Please enter a different contact name");
+
+			}
+		}
+		return true;
+
 	}
 
 }

@@ -18,7 +18,7 @@ public class AddressBookMain {
 			choice = input.nextInt();
 			switch (choice) {
 			case 1:
-				details.addContacts();
+				details.addContact();
 				break;
 			case 2:
 				details.listPeople();
