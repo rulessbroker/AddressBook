@@ -1,17 +1,16 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBook {
 
 //	ArrayList for storing contact
-	private ArrayList<Contact> ContactList;
+	ArrayList<Contact> ContactList = new ArrayList<Contact>();
+	static HashMap<String, ArrayList> addressBookList = new HashMap<>();
+	static String AddressBookName;
 	Scanner sc = new Scanner(System.in);
-
-	public AddressBook() {
-		ContactList = new ArrayList<Contact>();
-	}
 
 //	Creating contact
 	public Contact getContactInput() {
@@ -35,6 +34,7 @@ public class AddressBook {
 		String email = sc.nextLine();
 
 		Contact contact = new Contact(firstName, lastName, address, city, state, email, zip, phoneNumber);
+
 		return contact;
 	}
 
@@ -163,21 +163,28 @@ public class AddressBook {
 
 	}
 
-//	Check duplicate contact
-	public boolean checkDuplicateContact() {
-		System.out.println("Enter First Name");
-		String fname = sc.nextLine();
-		System.out.println("Enter Last Name");
-		String lname = sc.nextLine();
-		for (int j = 0; j < ContactList.size(); j++) {
-			Contact temp = ContactList.get(j);
-			if (temp.getFirstName().equals(fname) && temp.getLastName().equals(lname)) {
-				System.out.println("Contact already exists!!Please enter a different contact name");
+	void addNewAddressBook() {
+		System.out.println("Enter name for AddressBook: ");
+		String addressBookName = sc.next();
+		ArrayList<Contact> addressBook = new ArrayList();
+		addressBookList.put(addressBookName, addressBook);
+		System.out.println("new AddressBook created");
+		addressBook = addressBookList.get(addressBookName);
+		AddressBookName = addressBookName;
+	}
 
+	void selectAddressBook() {
+		System.out.println(addressBookList.keySet());
+		System.out.println("Enter name of address book:");
+		String addressBookName = sc.next();
+
+		for (String key : addressBookList.keySet()) {
+			if (key.equalsIgnoreCase(addressBookName)) {
+				ContactList = addressBookList.get(key);
+				AddressBookName = key;
 			}
 		}
-		return true;
-
+		System.out.println("current AddressBook is: " + AddressBookName);
 	}
 
 }
