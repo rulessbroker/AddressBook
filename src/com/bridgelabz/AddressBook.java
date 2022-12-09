@@ -243,7 +243,7 @@ public class AddressBook {
 		});
 	}
 
-//	Search contacts in Address Book
+//	Count contacts in Address Book
 	void countContact() {
 		System.out.println("1.Count by City \n2.Count by State");
 		int option = sc.nextInt();
