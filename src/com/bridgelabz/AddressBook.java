@@ -2,13 +2,16 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 
 //	ArrayList for storing contact
 	ArrayList<Contact> ContactList = new ArrayList<Contact>();
-	static HashMap<String, ArrayList> addressBookList = new HashMap<>();
+	static HashMap<String, ArrayList> addressBookList = new HashMap<>(); // Hash map for storing address book.
+																			
 	static String AddressBookName;
 	Scanner sc = new Scanner(System.in);
 
@@ -168,6 +171,7 @@ public class AddressBook {
 
 	}
 
+//	Create or add new address book
 	void addNewAddressBook() {
 		System.out.println("Enter name for AddressBook: ");
 		String addressBookName = sc.next();
@@ -178,6 +182,7 @@ public class AddressBook {
 		AddressBookName = addressBookName;
 	}
 
+//	select address book already created
 	void selectAddressBook() {
 		System.out.println(addressBookList.keySet());
 		System.out.println("Enter name of address book:");
@@ -192,9 +197,50 @@ public class AddressBook {
 		System.out.println("current AddressBook is: " + AddressBookName);
 	}
 
+//	checking duplicacity in Address Book with the help of Fist name
 	boolean checkDuplicateContact(Contact newPerson) {
 		return ContactList.stream()
 				.anyMatch((person) -> person.getFirstName().equalsIgnoreCase(newPerson.getFirstName()));
+	}
+
+//	Search contacts in Address Book
+	void searchContact() {
+		System.out.println("1.Search by City \n2.Search by State");
+		int option = sc.nextInt();
+		switch (option) {
+		case 1:
+			System.out.println("Enter city :");
+			searchByCity(sc.next());
+			break;
+		case 2:
+			System.out.println("Enter State :");
+			searchByState(sc.next());
+			break;
+		default:
+			searchContact();
+		}
+	}
+
+//	Search by city 
+	void searchByCity(String city) {
+
+		List<Contact> result = (List<Contact>) ContactList.stream().filter(n -> n.city.equals(city))
+				.collect(Collectors.toList());
+		result.forEach(n -> {
+			System.out.println("The persons in a city are " + n.firstName);
+
+		});
+	}
+
+//	Search by State
+	void searchByState(String state) {
+
+		List<Contact> result = (List<Contact>) ContactList.stream().filter(n -> n.state.equals(state))
+				.collect(Collectors.toList());
+		result.forEach(n -> {
+			System.out.println("The persons in a State are " + n.firstName);
+
+		});
 	}
 
 }
