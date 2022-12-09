@@ -11,7 +11,7 @@ public class AddressBook {
 //	ArrayList for storing contact
 	ArrayList<Contact> ContactList = new ArrayList<Contact>();
 	static HashMap<String, ArrayList> addressBookList = new HashMap<>(); // Hash map for storing address book.
-																			
+
 	static String AddressBookName;
 	Scanner sc = new Scanner(System.in);
 
@@ -241,6 +241,38 @@ public class AddressBook {
 			System.out.println("The persons in a State are " + n.firstName);
 
 		});
+	}
+
+//	Search contacts in Address Book
+	void countContact() {
+		System.out.println("1.Count by City \n2.Count by State");
+		int option = sc.nextInt();
+		switch (option) {
+		case 1:
+			System.out.println("Enter city :");
+			countByCity(sc.next());
+			break;
+		case 2:
+			System.out.println("Enter State :");
+			countByState(sc.next());
+			break;
+		default:
+			countContact();
+		}
+	}
+
+//	Count person in particular city
+	public void countByCity(String city) {
+		long count = ContactList.stream().filter(n -> n.city.equals(city)).count();
+		System.out.println("The no of persons in a city are " + count);
+
+	}
+
+//	Count person in particular state
+	public void countByState(String state) {
+		long count = ContactList.stream().filter(n -> n.state.equals(state)).count();
+		System.out.println("The no of persons in a state are " + count);
+
 	}
 
 }

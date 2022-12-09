@@ -14,8 +14,8 @@ public class AddressBookMain {
 
 		int choice;
 		do {
-			System.out.println("1.Add contact\n2.Show Contact\n3.Edit Contact\n4.Delete Contact\n5.Add new address book"
-					+ "\n6.Select address book\n7.searchContact\n8.Exit\n");
+			System.out.println("1.Add contact\n2.Show Contact\n3.Edit Contact\n4.Delete Contact\n5.Add New Address Book"
+					+ "\n6.Select Address Book\n7.Search Contact\n8.Count Contacts\n9.Exit\n");
 			System.out.println("Enter your choice: ");
 			choice = input.nextInt();
 			switch (choice) {
@@ -42,11 +42,14 @@ public class AddressBookMain {
 				details.searchContact();
 				break;
 			case 8:
+				details.countContact();
+				break;
+			case 9:
 				System.out.println("Program Terminate Successfully!!!");
 				break;
 			default:
 				System.out.println("Enter Valid Input...");
 			}
-		} while (choice != 8);
+		} while (choice != 9);
 	}
 }
