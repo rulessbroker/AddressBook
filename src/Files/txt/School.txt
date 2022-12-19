@@ -1,0 +1,17 @@
+Contacts { firstName = Rahul
+lastName = Bhosale
+address = Shahupuri
+city = satara
+state = Maharashtra
+email = rahulbhosale2563@gmail.com
+phoneNumber = 9822526974
+zip = 415002}
+
+Contacts { firstName = Rules
+lastName = Broker
+address = shilong
+city = henchaunk
+state = abu-dabi
+email = rulesbroker1111@gmail.com
+phoneNumber = 1245879635
+zip = 580002}

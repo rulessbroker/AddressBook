@@ -1,12 +1,14 @@
 package com.bridgelabz;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AddressBookMain {
 
 	static Scanner input = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		System.out.println("\n***Welcome To Address Book Program***\n");
 
@@ -15,7 +17,8 @@ public class AddressBookMain {
 		int choice;
 		do {
 			System.out.println("1.Add contact\n2.Show Contact\n3.Edit Contact\n4.Delete Contact\n5.Add New Address Book"
-					+ "\n6.Select Address Book\n7.Search Contact\n8.Count Contacts\n9.Sort contact by Name\n10.Exit\n");
+					+ "\n6.Select Address Book\n7.Search Contact\n8.Count Contacts\n9.Sort contact\n10.Read AddressBook"
+					+ "\n11.Write AddressBook\n12.Exit\n");
 			System.out.println("Enter your choice: ");
 			choice = input.nextInt();
 			switch (choice) {
@@ -48,11 +51,17 @@ public class AddressBookMain {
 				details.sortContact();
 				break;
 			case 10:
+				details.readAddressBook();
+				break;
+			case 11:
+				details.writeAddressBook();
+				break;
+			case 12:
 				System.out.println("Program Terminate Successfully!!!");
 				break;
 			default:
 				System.out.println("Enter Valid Input...");
 			}
-		} while (choice != 10);
+		} while (choice != 12);
 	}
 }

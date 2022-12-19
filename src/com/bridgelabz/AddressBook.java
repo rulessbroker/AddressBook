@@ -1,5 +1,9 @@
 package com.bridgelabz;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -315,6 +319,38 @@ public class AddressBook {
 			allContacts.addAll(addressBookList.get(key));
 		}
 		return allContacts;
+	}
+
+	void readAddressBook() throws FileNotFoundException {
+		System.out.println("Select option \n1.read from txt file \n2.back");
+		int option = sc.nextInt();
+		switch (option) {
+		case 1:
+			FileIO.read(new File(FileIO.FILE_PATH.concat("txt//")));
+			break;
+		case 2:
+			break;
+		default:
+			readAddressBook();
+		}
+	}
+
+	void writeAddressBook() throws IOException {
+		System.out.println("Select option \n1.Write to txt file \n2.back");
+		int option = sc.nextInt();
+		switch (option) {
+		case 1:
+			for (String key : addressBookList.keySet()) {
+				FileIO.writeTxtFile(addressBookList.get(key), key);
+			}
+			break;
+		case 2:
+			break;
+		default:
+			writeAddressBook();
+			break;
+
+		}
 	}
 
 }
