@@ -275,4 +275,31 @@ public class AddressBook {
 
 	}
 
+	public void sortContact() {
+		List<Contact> allContacts = getAllContacts();
+		List<Contact> sortedContacts;
+
+		System.out.println("1.Sort By Name \n2.back");
+		switch (sc.nextInt()) {
+		case 1:
+			sortedContacts = allContacts.stream().sorted((x, y) -> x.getFirstName().compareTo(y.getFirstName()))
+					.collect(Collectors.toList());
+			sortedContacts.forEach(x -> System.out.println(x));
+			break;
+		case 2:
+			break;
+		default:
+			sortContact();
+			break;
+		}
+	}
+
+	List<Contact> getAllContacts() {
+		List<Contact> allContacts = new ArrayList<>();
+		for (String key : addressBookList.keySet()) {
+			allContacts.addAll(addressBookList.get(key));
+		}
+		return allContacts;
+	}
+
 }
