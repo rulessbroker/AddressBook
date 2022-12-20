@@ -45,6 +45,7 @@ public class FileIO {
 		fileWriter.write(data);
 		fileWriter.close();
 		return true;
+		
 	}
 
 	public static boolean writeCsvFile(ArrayList<Contact> contacts, String addressBookName) throws IOException {
