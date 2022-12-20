@@ -41,7 +41,6 @@ public class AddressBook {
 		String email = sc.nextLine();
 
 		Contact contact = new Contact(firstName, lastName, address, city, state, email, zip, phoneNumber);
-
 		return contact;
 	}
 
