@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonWriter;
 import com.opencsv.CSVWriter;
 
 public class FileIO {
@@ -66,5 +68,23 @@ public class FileIO {
 
 		fileWriter.close();
 		return true;
+	}
+
+	public static void writeJsonFile(ArrayList<Contact> contacts, String addressBookName) throws IOException {
+		File file = new File(FILE_PATH + "Json\\" + addressBookName + ".json");
+		boolean isCreated = file.createNewFile();
+		if (!isCreated) {
+			file.delete();
+			file.createNewFile();
+		}
+		System.out.println("file created");
+		FileWriter writer = new FileWriter(file);
+		JsonWriter json = new JsonWriter(writer);
+		String data = "";
+		for (Contact person : contacts) {
+			data = data.concat((person.toString() + "\n"));
+		}
+		writer.write(data);
+		writer.close();
 	}
 }

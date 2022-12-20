@@ -322,7 +322,7 @@ public class AddressBook {
 	}
 
 	void readAddressBook() throws FileNotFoundException {
-		System.out.println("Select option \n1.read from txt file \n2.read from csv \n3.back");
+		System.out.println("Select option \n1.read from txt file \n2.read from csv \n3. read from json file \n4.back");
 		int option = sc.nextInt();
 		switch (option) {
 		case 1:
@@ -332,6 +332,9 @@ public class AddressBook {
 			FileIO.read(new File(FileIO.FILE_PATH + ("CSV//")));
 			break;
 		case 3:
+			FileIO.read(new File(FileIO.FILE_PATH.concat("Json//")));
+			break;
+		case 4:
 			break;
 		default:
 			readAddressBook();
@@ -339,7 +342,7 @@ public class AddressBook {
 	}
 
 	void writeAddressBook() throws IOException {
-		System.out.println("Select option \n1.Write to txt file \n2.Write to csv file \n3.back");
+		System.out.println("Select option \n1.Write to txt file \n2.Write to csv file \n3.Write to json file \n4.back");
 		int option = sc.nextInt();
 		switch (option) {
 		case 1:
@@ -353,6 +356,10 @@ public class AddressBook {
 			}
 			break;
 		case 3:
+			for (String key : addressBookList.keySet()) {
+				FileIO.writeJsonFile(addressBookList.get(key), key);
+			}
+		case 4:
 			break;
 		default:
 			writeAddressBook();
